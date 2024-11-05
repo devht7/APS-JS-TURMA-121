@@ -1,0 +1,28 @@
+// Função que verifica se um número é primo 
+const ehPrimo = function(num) {
+  if (num <= 1) return false; // Condicional para números não primos
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false; // Se haver divisor, não é primo
+  }
+  return true; // Se não houver divisor, é primo
+};
+
+// Função para encontrar os N primeiros números primos
+const encontrarNPrimeirosPrimos = function(n) {
+  const primos = []; // Array para armazenar os números primos
+  let numeroAtual = 5542; // Arbitrariamente comecei a partir de 5542
+
+  while (primos.length < n) { // Mantém até encontrar N primos
+    if (ehPrimo(numeroAtual)) {
+      primos.push(numeroAtual); // Adiciona o número primo ao array
+    }
+    numeroAtual++; // Incrementa para verificar o próximo número
+  }
+  
+  return primos; // Retorna o array com os N primeiros números primos
+};
+
+// Exemplo de uso (utilizando escopo e funções com parâmetros)
+const numeroDePrimos = 10;
+const primeirosPrimos = encontrarNPrimeirosPrimos(numeroDePrimos);
+console.log(`Os ${numeroDePrimos} primeiros números primos são:`, primeirosPrimos);
